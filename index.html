@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Braisedfish</title>
+    <meta name="description" content="BraisedFishの个人网站">
+    <meta name="keywords" content="个人主页,二次元">
+    <link rel="icon" type="image/ico" href="https://pic.imgdb.cn/item/665bc906d9c307b7e9dbc6e3.jpg">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/style.css?v=1.1">
+    <link rel="stylesheet" href="./static/APlayer-1.10.1/dist/APlayer.min.css">
+
+    <style>
+        body {
+            background-image: url("https://pic.imgdb.cn/item/650eb78ec458853aef110926.jpg");
+        }
+
+        .photo-bg {
+            background-image: url("https://pic.imgdb.cn/item/650eaf9ac458853aef0de153.jpg");
+        }
+    </style>
+    <script>
+        let meting_music_api = "https://api.mizore.cn/meting/api.php";// meting api
+        let music_server = "netease"; 
+        let music_type = "playlist"; 
+        let music_id = "6767215654"; 
+        let music_order = "random"; 
+        let music_mini = true
+        let music_fixed = false;
+        let music_volume = 0.7;
+        let music_autoplay = true; 
+        let music_loop = "all"; 
+    </script>
+</head>
+
+<body>
+    <div id="main" class="container">
+        <div class="row my-card justify-content-center">
+            <div class="col-lg-4 photo-bg"></div>
+            <div class="col-lg-8 card">
+                <h1>BraisedFishの个人主页</h1>
+                <p>
+                    什么都会一点，什么都想实现。接稿请联系QQ。
+                </p>
+                <p id="hitokoto_text">...</p>
+                <div class="container-fluid">
+                    <div class="row">
+                        <button data-href="https://www.pixiv.net/users/77540431" data-title="Pixiv" data-window="newtab"
+                            data-area-w="80%" data-area-h="90%" data-shade="false"
+                            class="btn btn-outline-primary col-lg-12">Pixiv</button>
+
+                        <button data-href="https://braisedfisher.github.io/eatDaBian/" data-title="Game" data-window="newtab"
+                            data-area-w="80%" data-area-h="90%" data-shade="false"
+                            class="kz-nav-btn btn btn-primary col-lg-4">Game</button>
+
+                        
+                        <button data-href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=2208448550@qq.com"
+                            data-title="Blog" data-window="pop" data-anim="4" data-area-w="80%" data-area-h="90%"
+                            data-shade="false" class="kz-nav-btn btn btn-success col-lg-4">Send a Mail</button>
+
+                        <button data-href="http://wpa.qq.com/msgrd?v=3&uin=2208448550&site=qq&menu=yes"
+                            data-title="QQ" data-window="newtab" data-anim="4" data-area-w="80%" data-area-h="90%"
+                            data-shade="false" class="kz-nav-btn btn btn-warning col-lg-4">QQ</button>
+
+                    </div>
+                </div>
+                <!-- aplayer inner -->
+                <div id="aplayer-inner" class="aplayer"></div>
+
+
+                <footer>
+                    <p>Designed By <a href="https://braisedfisher.github.io/" target="_blank">Braisedfish</a>
+                                <style="width:50px;"></a>
+                    </p>
+                </footer>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="aplayer-fixed" class="aplayer"></div>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./static/APlayer-1.10.1/dist/APlayer.min.js"></script>
+    <script src="./static/Meting.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script defer src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="./static/layer-v3.5.1/layer/layer.js"></script>
+
+    <script src="./static/main.js"></script>
+
+</html>
