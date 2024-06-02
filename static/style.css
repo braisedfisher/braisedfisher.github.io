@@ -1,10 +1,10 @@
-body {
-    font-size: 18px;
-    color: #6c767d;
-    background-color: #ebf1f5;
-    background-image: url("https://pic.imgdb.cn/item/650eb78ec458853aef110926.jpg");
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+body    身体{{
+       字体大小:18 px;font-size: 18px;
+       颜色:# 6c767d;color: #6c767d;
+    背景颜色：#ebf1f5（浅灰色）background-color: #ebf1f5;
+    背景图片：background-image   背景图像: url("https://pic.imgdb.cn/item/650eb78ec458853aef110926.jpg");
+    背景固定background-attachment: fixed;
+    背景重复方式为“不重复”。background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
     min-height: 600px;
@@ -16,7 +16,7 @@ body {
     background-color: #F5F5F5;
 }
 .box{
-  background-image: url('https://pic.imgdb.cn/item/650eb78ec458853aef110926.jpg');
+  background-image: url('https://pic.imgdb.cn/item/650eaf9ac458853aef0de153.jpg');
   background-position: center
 }.card{
   backdrop-filter: blur(25px) saturate(200%);
@@ -65,7 +65,7 @@ h1,
 h2,
 h3,
 h4 {
-    color: black;
+    color: black;   颜色:黑色;
 }
 
 .card {
