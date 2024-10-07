@@ -69,6 +69,8 @@ body {
     background-size: cover;
     justify-content: center;
     color: var(--main-text-color);
+    background-attachment: fixed;
+	backdrop-filter: blur(2px);
 }
 
 

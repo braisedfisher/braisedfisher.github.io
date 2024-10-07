@@ -33,7 +33,7 @@ function wx(imageURL) {
 document.addEventListener('DOMContentLoaded', function () {
 
 
-   var themeState = getCookie("themeState") || "Blue"; 
+   var themeState = "Dark"; 
     var svgItems = document.getElementsByTagName("svg");
     var tanChiShe = document.getElementById("tanChiShe");
     var body = document.body;
@@ -51,23 +51,24 @@ document.addEventListener('DOMContentLoaded', function () {
             changeSvg("#000000");
             tanChiShe.src = "/static/svg/snake-Light.svg";
             var lightStyles = {
-                '--main-bg-color': '#ffffff',
-                '--main-text-color': '#000000',
-                '--gradient-start': '#607df1',
-                '--gradient-middle': '#e0321b',
-                '--gradient-end': '#000000',
-                '--purple-text-color': '#2b3ce2',
-                '--text-bg-color': '#f4f4f4',
-                '--icon-bg-color': 'rgb(246 246 246)',
+                '--main-bg-color': 'rgb(0, 0, 0)',
+                '--main-text-color': '#ffffff',
+                '--gradient-start': 'rgb(133, 62, 255)',
+                '--gradient-middle': '#f76cc6 30%',
+                '--gradient-end': 'rgb(255, 255, 255) 60%',
+                '--purple-text-color': 'rgb(115, 19, 206)',
+                '--text-bg-color': 'rgb(26, 4, 48)',
+                '--icon-bg-color': 'rgb(19 20 24)',
                 '--icon-1-hover-color': 'rgb(68, 120, 241)',
                 '--icon-2-hover-color': 'rgb(232, 68, 241)',
                 '--icon-3-hover-color': 'rgb(179, 206, 0)',
                 '--icon-4-hover-color': 'rgb(201, 13, 0)',
                 '--icon-5-hover-color': 'rgb(111, 44, 20)',
-                '--project-item-bg-color': 'rgb(246 246 246)',
-                '--project-item-hover-color': '#eeeeee',
-                '--project-item-left-title-color': '#000000',
-                '--project-item-left-text-color': '#7e7e7e'
+                '--project-item-bg-color': 'rgb(19 20 24)',
+                '--project-item-hover-color': 'rgb(19, 23, 27)',
+                '--project-item-left-title-color': 'rgb(255, 255, 255)',
+                '--project-item-left-text-color': 'rgb(142, 142, 142)',
+                '--footer-text-color': '#646464'
             };
             for (const property in lightStyles) {
                 body.style.setProperty(property, lightStyles[property]);
@@ -106,23 +107,24 @@ document.addEventListener('DOMContentLoaded', function () {
             changeSvg("#000000");
             tanChiShe.src = "/static/svg/snake-Light.svg";
             var blueStyles = {
-                '--main-bg-color': ' linear-gradient(45deg, #7fb2e5, white)',
-                '--main-text-color': '#000000',
-                '--gradient-start': '#607df1',
-                '--gradient-middle': '#e0321b',
-                '--gradient-end': '#000000',
-                '--purple-text-color': '#2b3ce2',
-                '--text-bg-color': '#f4f4f4',
-                '--icon-bg-color': 'rgba(249, 250, 251, 0.6)',
+                '--main-bg-color': 'rgb(0, 0, 0)',
+                '--main-text-color': '#ffffff',
+                '--gradient-start': 'rgb(133, 62, 255)',
+                '--gradient-middle': '#f76cc6 30%',
+                '--gradient-end': 'rgb(255, 255, 255) 60%',
+                '--purple-text-color': 'rgb(115, 19, 206)',
+                '--text-bg-color': 'rgb(26, 4, 48)',
+                '--icon-bg-color': 'rgb(19 20 24)',
                 '--icon-1-hover-color': 'rgb(68, 120, 241)',
                 '--icon-2-hover-color': 'rgb(232, 68, 241)',
                 '--icon-3-hover-color': 'rgb(179, 206, 0)',
                 '--icon-4-hover-color': 'rgb(201, 13, 0)',
                 '--icon-5-hover-color': 'rgb(111, 44, 20)',
-                '--project-item-bg-color': 'rgba(249, 250, 251, 0.6)',
-                '--project-item-hover-color': 'rgba(240, 241, 241, 0.6)',
-                '--project-item-left-title-color': '#000000',
-                '--project-item-left-text-color': '#7e7e7e'
+                '--project-item-bg-color': 'rgb(19 20 24)',
+                '--project-item-hover-color': 'rgb(19, 23, 27)',
+                '--project-item-left-title-color': 'rgb(255, 255, 255)',
+                '--project-item-left-text-color': 'rgb(142, 142, 142)',
+                '--footer-text-color': '#646464'
             };
             for (const property in blueStyles) {
                 body.style.setProperty(property, blueStyles[property]);
