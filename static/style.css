@@ -64,7 +64,7 @@ a:focus {
 
 body {
     display: flex;
-    background: var(--main-bg-color);
+    background: url(https://pic.imgdb.cn/item/6703c157d29ded1a8c6cd96b.png) no-repeat;;
     background-position: center;
     background-size: cover;
     justify-content: center;
