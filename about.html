@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>关于 · Braisedfish</title>
+    <meta name="description" content="关于 Braisedfish：NovelAI 画师，正在学习 After Effects、Blender 与 Vibe Coding，记录自己的创作与工程路径。">
+    <meta name="author" content="Braisedfish">
+    <link rel="canonical" href="https://www.braisedfish.cloudns.ch/about.html">
+    <meta name="theme-color" content="#080a10">
+    <meta name="color-scheme" content="dark light">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="关于 · Braisedfish">
+    <meta property="og:description" content="NovelAI 画师，学习中的人。">
+    <meta property="og:url" content="https://www.braisedfish.cloudns.ch/about.html">
+    <meta property="og:image" content="https://www.braisedfish.cloudns.ch/static/item/i1.png">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+    <link rel="stylesheet" href="/static/style.css?v=3.0">
+    <script>
+        (function () {
+            document.documentElement.classList.add('js');
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved !== 'light' && saved !== 'dark') {
+                    saved = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                }
+                document.documentElement.dataset.theme = saved;
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) meta.setAttribute('content', saved === 'light' ? '#f2f5fb' : '#080a10');
+            } catch (e) { }
+        })();
+    </script>
+</head>
+
+<body>
+    <header class="topbar" id="topbar">
+        <div class="topbarInner">
+            <a class="brand" href="/" aria-label="Braisedfish 首页">
+                <img class="brandImg" src="/static/logo.png" width="30" height="30" alt="" aria-hidden="true" decoding="async">
+                <span class="brandText">Braisedfish<span class="brandDot">.</span></span>
+            </a>
+            <nav class="nav" id="nav" aria-label="主导航">
+                <a class="navLink" href="/">首页</a>
+                <a class="navLink" href="/about.html">关于</a>
+                <a class="navLink" href="/works.html">作品</a>
+                <a class="navLink" href="/ae.html">AE</a>
+                <a class="navLink" href="/blender.html">Blender</a>
+                <a class="navLink" href="/vibe.html">Vibe</a>
+                <a class="navLink" href="/contact.html">联系</a>
+            </nav>
+            <div class="topbarActions">
+                <button class="iconItem icon--theme" id="themeToggle" type="button" aria-label="切换深浅色主题" data-tip="主题">
+                    <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4.2" />
+                        <path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" />
+                    </svg>
+                    <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                    </svg>
+                </button>
+                <button class="navToggle" id="navToggle" type="button" aria-label="打开菜单" aria-controls="nav"
+                    aria-expanded="false">
+                    <span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <div class="progress" id="progress" aria-hidden="true"></div>
+    </header>
+
+    <div class="page">
+        <header class="pageHero">
+            <p class="pageKicker"><span class="num">01</span><span>About</span><span class="split"></span></p>
+            <h1 class="pageTitle">画图的人，<br>也喜欢写点<em>代码</em></h1>
+            <p class="pageLead">
+                我是 Braisedfish。日常用 NovelAI 生成与打磨插画，同时在学习 After Effects、Blender 和 Vibe Coding。
+                这个站点既是作品集，也是一份公开的学习笔记 —— 把正在做的事、踩过的坑和用过的方法都记下来。
+            </p>
+            <div class="chips">
+                <span class="chip chip--accent">NovelAI Artist</span>
+                <span class="chip">After Effects 学习中</span>
+                <span class="chip">Blender 学习中</span>
+                <span class="chip">Vibe Coding</span>
+            </div>
+        </header>
+
+        <div class="stats" style="margin-top:34px" data-reveal>
+            <div class="stat">
+                <span class="statValue">NovelAI</span>
+                <span class="statLabel">主力创作工具</span>
+            </div>
+            <div class="stat">
+                <span class="statValue">AE</span>
+                <span class="statLabel">正在学 · 动效</span>
+            </div>
+            <div class="stat">
+                <span class="statValue">Blender</span>
+                <span class="statLabel">正在学 · 三维</span>
+            </div>
+            <div class="stat">
+                <span class="statValue">AI</span>
+                <span class="statLabel">正在用 · 编程</span>
+            </div>
+        </div>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">01 / Story</p>
+                <h2 class="sectionTitle">我在做什么</h2>
+            </div>
+            <p class="sectionDesc">三条线互相喂养：图像给我审美，动效给我节奏，代码给我工具。</p>
+        </div>
+
+        <div class="grid grid--2">
+            <article class="card" data-reveal>
+                <span class="cardIcon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 3.5a8.5 8.5 0 0 0 0 17c1.4 0 2-.9 2-1.8 0-1.4-1.2-1.7-1.2-2.8 0-.9.7-1.4 1.7-1.4h1.3a4.7 4.7 0 0 0 4.7-4.7c0-3.5-3.6-6.3-8.5-6.3z" />
+                        <circle cx="8.2" cy="9.4" r="1.1" fill="currentColor" stroke="none" />
+                        <circle cx="12.4" cy="7.4" r="1.1" fill="currentColor" stroke="none" />
+                        <circle cx="16.2" cy="9.6" r="1.1" fill="currentColor" stroke="none" />
+                    </svg>
+                </span>
+                <h3 class="cardTitle">画画这件事</h3>
+                <p class="cardText">
+                    用 NovelAI 做底图，再靠提示词、构图与后期一点点推到想要的样子。
+                    我关心的不是「一键出图」，而是怎么把脑子里的画面稳定地复现出来。作品主要发在 Pixiv，也接约稿。
+                </p>
+                <span class="cardMeta">Pixiv · 约稿中</span>
+            </article>
+
+            <article class="card" data-reveal style="--d:80ms">
+                <span class="cardIcon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M8 5.5 3.5 12 8 18.5M16 5.5 20.5 12 16 18.5M13.6 4.5l-3.2 15" />
+                    </svg>
+                </span>
+                <h3 class="cardTitle">写代码这件事</h3>
+                <p class="cardText">
+                    从脚本和小工具开始，一路写到这里：B 站推送、Pixiv 代理、这个站点。
+                    现在更多是 vibe coding —— 我负责想清楚要什么，AI 负责把它写出来，我再逐行看懂、改到满意。
+                </p>
+                <span class="cardMeta">GitHub · 开源</span>
+            </article>
+        </div>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">02 / Path</p>
+                <h2 class="sectionTitle">学习路径</h2>
+            </div>
+            <p class="sectionDesc">不追求速成，按能做出东西的顺序推进。</p>
+        </div>
+
+        <ol class="timeline">
+            <li class="tlItem" data-reveal>
+                <p class="tlDate">Now · 打底</p>
+                <h3 class="tlTitle">把静态画面做出节奏</h3>
+                <p class="tlText">AE 里练关键帧与曲线，先学会让一张图「动得合理」，而不是堆特效。</p>
+            </li>
+            <li class="tlItem" data-reveal style="--d:60ms">
+                <p class="tlDate">Now · 扩展</p>
+                <h3 class="tlTitle">进入三维空间</h3>
+                <p class="tlText">Blender 从建模和打光开始，目标是能把角色放进一个有体积感的场景里。</p>
+            </li>
+            <li class="tlItem" data-reveal style="--d:120ms">
+                <p class="tlDate">Ongoing · 工具化</p>
+                <h3 class="tlTitle">让 AI 承担重复劳动</h3>
+                <p class="tlText">用 vibe coding 把想法当天做成可用的页面、脚本和工作流，减少「想到了但没做」的损耗。</p>
+            </li>
+            <li class="tlItem" data-reveal style="--d:180ms">
+                <p class="tlDate">Next · 合流</p>
+                <h3 class="tlTitle">把三条线接起来</h3>
+                <p class="tlText">插画 → 分层 → AE 动效 → Blender 场景，最后用代码把整个流程串成可复用的管线。</p>
+            </li>
+        </ol>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">03 / Preferences</p>
+                <h2 class="sectionTitle">一些偏好</h2>
+            </div>
+        </div>
+
+        <div class="grid grid--2">
+            <div class="card" data-reveal>
+                <h3 class="cardTitle" style="margin-top:0">喜欢的</h3>
+                <p class="cardText">
+                    干净的排版、克制的配色、有呼吸感的留白；<br>
+                    能跑起来的最小实现，胜过写一半的完美架构；<br>
+                    把过程记录下来，哪怕只是三行笔记。
+                </p>
+            </div>
+            <div class="card" data-reveal style="--d:80ms">
+                <h3 class="cardTitle" style="margin-top:0">不喜欢的</h3>
+                <p class="cardText">
+                    为了炫技而堆满的效果；<br>
+                    看不懂却直接复制进项目的代码；<br>
+                    只收藏教程、从不动手的学习方式。
+                </p>
+            </div>
+        </div>
+
+        <div class="callout" style="margin-top:22px" data-reveal>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 8h.01M11 12h1v4h1" />
+            </svg>
+            <p><strong>关于这个站：</strong>纯静态、零框架，多页面共享一套 CSS 与脚本。想抄结构直接去 GitHub 拿，不用问我。</p>
+        </div>
+
+        <nav class="nextNav" aria-label="继续浏览">
+            <a class="nextLink" href="/works.html">
+                <span class="nextLabel">Next · 02</span>
+                <span class="nextTitle">看看作品与项目 →</span>
+            </a>
+            <a class="nextLink nextLink--right" href="/contact.html">
+                <span class="nextLabel">Contact</span>
+                <span class="nextTitle">来聊聊合作 →</span>
+            </a>
+        </nav>
+    </div>
+
+    <footer class="siteFooter">
+        <div class="footerInner">
+            <div class="footerGrid">
+                <div class="footerBrand">
+                    <a class="brand" href="/">
+                        <img class="brandImg" src="/static/logo.png" width="30" height="30" alt="" aria-hidden="true" decoding="async">
+                        <span class="brandText">Braisedfish<span class="brandDot">.</span></span>
+                    </a>
+                    <p>NovelAI 画师，正在学 After Effects、Blender 与 Vibe Coding。这里放作品，也放学习过程。</p>
+                </div>
+                <div class="footerCol">
+                    <h4>导航</h4>
+                    <a href="/about.html">关于</a>
+                    <a href="/works.html">作品</a>
+                    <a href="/contact.html">联系</a>
+                </div>
+                <div class="footerCol">
+                    <h4>学习笔记</h4>
+                    <a href="/ae.html">After Effects</a>
+                    <a href="/blender.html">Blender</a>
+                    <a href="/vibe.html">Vibe Coding</a>
+                </div>
+            </div>
+            <div class="footerBottom">
+                <p>© <span id="year">2026</span> Braisedfish · Designed &amp; built with <span class="heart">♥</span>
+                </p>
+                <p>
+                    <a href="https://github.com/braisedfisher" target="_blank" rel="noopener">GitHub</a>
+                    <span class="sep">·</span>
+                    <a href="https://braisedfish.pages.dev" target="_blank" rel="noopener">Mirror</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="二维码" hidden>
+        <div class="lightbox-main">
+            <img class="lightbox-img" src="" alt="">
+        </div>
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="关闭">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="22" height="22" aria-hidden="true">
+                <path fill="currentColor"
+                    d="M610.616405 512.423878l391.647127 391.939565a68.722849 68.722849 0 0 1 0 98.332161 72.012772 72.012772 0 0 1-100.306115 0l-390.404267-391.354689-392.012675 391.28158a69.74638 69.74638 0 0 1-98.551489-98.551489l391.793346-391.720237L20.988986 119.533891A69.74638 69.74638 0 0 1 119.540475 20.982402l392.158893 392.451331L901.957417 23.248793a72.012772 72.012772 0 0 1 100.306115 0 68.722849 68.722849 0 0 1 0 98.332161L610.616405 512.423878z" />
+            </svg>
+        </button>
+    </div>
+
+    <script src="/static/script.js?v=3.0"></script>
+</body>
+
+</html>

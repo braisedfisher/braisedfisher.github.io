@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vibe Coding · Braisedfish</title>
+    <meta name="description" content="Vibe Coding 实践笔记：怎么用自然语言和 AI 协作写代码，从需求规格、迭代到验收的完整工作流。">
+    <meta name="author" content="Braisedfish">
+    <link rel="canonical" href="https://www.braisedfish.cloudns.ch/vibe.html">
+    <meta name="theme-color" content="#080a10">
+    <meta name="color-scheme" content="dark light">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Vibe Coding · Braisedfish">
+    <meta property="og:description" content="把想法当天做成东西：我的 AI 编程工作流。">
+    <meta property="og:url" content="https://www.braisedfish.cloudns.ch/vibe.html">
+    <meta property="og:image" content="https://www.braisedfish.cloudns.ch/static/item/i1.png">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+    <link rel="stylesheet" href="/static/style.css?v=3.0">
+    <script>
+        (function () {
+            document.documentElement.classList.add('js');
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved !== 'light' && saved !== 'dark') {
+                    saved = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                }
+                document.documentElement.dataset.theme = saved;
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) meta.setAttribute('content', saved === 'light' ? '#f2f5fb' : '#080a10');
+            } catch (e) { }
+        })();
+    </script>
+</head>
+
+<body>
+    <header class="topbar" id="topbar">
+        <div class="topbarInner">
+            <a class="brand" href="/" aria-label="Braisedfish 首页">
+                <img class="brandImg" src="/static/logo.png" width="30" height="30" alt="" aria-hidden="true" decoding="async">
+                <span class="brandText">Braisedfish<span class="brandDot">.</span></span>
+            </a>
+            <nav class="nav" id="nav" aria-label="主导航">
+                <a class="navLink" href="/">首页</a>
+                <a class="navLink" href="/about.html">关于</a>
+                <a class="navLink" href="/works.html">作品</a>
+                <a class="navLink" href="/ae.html">AE</a>
+                <a class="navLink" href="/blender.html">Blender</a>
+                <a class="navLink" href="/vibe.html">Vibe</a>
+                <a class="navLink" href="/contact.html">联系</a>
+            </nav>
+            <div class="topbarActions">
+                <button class="iconItem icon--theme" id="themeToggle" type="button" aria-label="切换深浅色主题" data-tip="主题">
+                    <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4.2" />
+                        <path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" />
+                    </svg>
+                    <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                    </svg>
+                </button>
+                <button class="navToggle" id="navToggle" type="button" aria-label="打开菜单" aria-controls="nav"
+                    aria-expanded="false">
+                    <span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <div class="progress" id="progress" aria-hidden="true"></div>
+    </header>
+
+    <div class="page">
+        <header class="pageHero">
+            <p class="pageKicker"><span class="num">05</span><span>Vibe Coding</span><span class="split"></span></p>
+            <h1 class="pageTitle">说清楚要什么，<br>剩下的交给<em>代码</em></h1>
+            <p class="pageLead">
+                Vibe coding 不是「一句话生成一个 App」。它更像和一个手速极快的搭档合作：
+                我负责判断、审美和拆解，它负责打字。真正的功夫在于把模糊的「我想要那个感觉」，
+                翻译成它能执行、我能验收的具体描述。
+            </p>
+            <div class="chips">
+                <span class="chip chip--accent">AI 结对</span>
+                <span class="chip">小步迭代</span>
+                <span class="chip">可回滚</span>
+                <span class="chip">看得懂才算完</span>
+            </div>
+        </header>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">01 / Loop</p>
+                <h2 class="sectionTitle">我的五步循环</h2>
+            </div>
+            <p class="sectionDesc">每一步都很短，短到可以在一次对话里走完一轮。</p>
+        </div>
+
+        <ol class="steps">
+            <li class="step" data-reveal>
+                <span class="stepNum">01</span>
+                <div>
+                    <h3>先想清楚「完成」长什么样</h3>
+                    <p>在写提示词之前，先用一句话说清验收标准：点哪个按钮、看到什么、在手机上会不会错位。想不清就别开始。</p>
+                    <div class="stepTags"><span>验收标准</span><span>用户路径</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:60ms">
+                <span class="stepNum">02</span>
+                <div>
+                    <h3>写规格，而不是写愿望</h3>
+                    <p>告诉它约束：技术栈、已有组件、颜色变量、不要动哪些文件。约束越清楚，返工越少。</p>
+                    <div class="stepTags"><span>上下文</span><span>约束</span><span>边界</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:120ms">
+                <span class="stepNum">03</span>
+                <div>
+                    <h3>先跑通最小版本</h3>
+                    <p>能用 > 好看 > 好维护。第一版只求在浏览器里出现，再逐步加动效和细节。</p>
+                    <div class="stepTags"><span>MVP</span><span>迭代</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:180ms">
+                <span class="stepNum">04</span>
+                <div>
+                    <h3>回读代码，自己验收</h3>
+                    <p>逐段看懂它写了什么，跑一遍边界情况：窄屏、无 JS、深色模式、键盘操作。看不懂的部分，要求它解释。</p>
+                    <div class="stepTags"><span>Review</span><span>边界测试</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:240ms">
+                <span class="stepNum">05</span>
+                <div>
+                    <h3>提交，留下可回滚的点</h3>
+                    <p>每完成一个可用的阶段就提交一次。有 commit 才有退路，也才有「这次改动到底改了什么」的答案。</p>
+                    <div class="stepTags"><span>Git</span><span>小步提交</span></div>
+                </div>
+            </li>
+        </ol>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">02 / Split</p>
+                <h2 class="sectionTitle">谁负责什么</h2>
+            </div>
+            <p class="sectionDesc">把「理解」留在自己这边，是把 AI 用久的关键。</p>
+        </div>
+
+        <div class="grid grid--2">
+            <article class="card" data-reveal>
+                <span class="cardIcon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="8" r="3.4" />
+                        <path d="M4.8 20.5c0-3.6 3.2-5.6 7.2-5.6s7.2 2 7.2 5.6" />
+                    </svg>
+                </span>
+                <h3 class="cardTitle">我负责</h3>
+                <p class="cardText">
+                    决定做什么、不做什么；判断视觉与交互是否对味；拆解任务、限定范围；
+                    最后逐行验收，并对上线结果负责。
+                </p>
+                <span class="cardMeta">决策 / 审美 / 验收</span>
+            </article>
+
+            <article class="card" data-reveal style="--d:80ms">
+                <span class="cardIcon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="4" y="6" width="16" height="12.5" rx="2.5" />
+                        <path d="M8.5 11.5h7M8.5 14.5h4" />
+                        <path d="M12 3v3M9.5 3h5" />
+                    </svg>
+                </span>
+                <h3 class="cardTitle">AI 负责</h3>
+                <p class="cardText">
+                    写样板代码、查 API 用法、批量重命名与重构、生成测试数据、解释报错；
+                    把重复劳动压缩到几秒。
+                </p>
+                <span class="cardMeta">实现 / 检索 / 重写</span>
+            </article>
+        </div>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">03 / Template</p>
+                <h2 class="sectionTitle">我常用的提示词结构</h2>
+            </div>
+            <p class="sectionDesc">四段式：背景、目标、约束、验收。可直接复制改成自己的。</p>
+        </div>
+
+        <div class="codeBlock" data-reveal>
+            <div class="codeHead">
+                <span>prompt.md · 新增一个页面</span>
+                <button class="copyBtn" type="button">复制</button>
+            </div>
+            <pre><code><span class="tok-c"># 背景</span>
+纯静态多页面站点，共享 /static/style.css 与 /static/script.js。
+不引入框架、不加构建步骤。
+
+<span class="tok-c"># 目标</span>
+新增「学习笔记」页面，视觉与 ae.html 保持一致，
+包含：页头、5 个步骤卡片、1 个代码块、底部上一页 / 下一页导航。
+
+<span class="tok-c"># 约束</span>
+- 复用现有 class：.page / .pageHero / .steps / .codeBlock / .nextNav
+- 颜色只用 CSS 变量，不写死色值
+- 深浅色主题、375px 窄屏都要正常
+- 导航与页脚复制现有页面的结构，不要重写样式
+
+<span class="tok-c"># 验收</span>
+- 断网直接打开 HTML 仍可阅读
+- 控制台无报错，无横向滚动
+- 键盘 Tab 能走完所有可交互元素</code></pre>
+        </div>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">04 / Toolbox</p>
+                <h2 class="sectionTitle">工具链</h2>
+            </div>
+            <p class="sectionDesc">越轻越好，能少一个依赖就少一个。</p>
+        </div>
+
+        <div class="grid grid--3">
+            <div class="card" data-reveal>
+                <h3 class="cardTitle" style="margin-top:0">编辑器里的 AI</h3>
+                <p class="cardText">在终端里直接下指令、改文件、跑测试。上下文就挂在项目目录上，比聊天窗口靠谱。</p>
+                <span class="cardMeta">Agent · CLI</span>
+            </div>
+            <div class="card" data-reveal style="--d:80ms">
+                <h3 class="cardTitle" style="margin-top:0">Git</h3>
+                <p class="cardText">AI 改得再快，也要有 commit。一次改动一个主题，出问题能精准回退。</p>
+                <span class="cardMeta">版本 · 回滚</span>
+            </div>
+            <div class="card" data-reveal style="--d:160ms">
+                <h3 class="cardTitle" style="margin-top:0">静态托管</h3>
+                <p class="cardText">GitHub Pages 与 Cloudflare Pages 双线部署，push 即上线，成本为零。</p>
+                <span class="cardMeta">Pages · CDN</span>
+            </div>
+        </div>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">05 / Principles</p>
+                <h2 class="sectionTitle">几条不变的原则</h2>
+            </div>
+        </div>
+
+        <div class="grid grid--2">
+            <div class="card" data-reveal>
+                <h3 class="cardTitle" style="margin-top:0">01 · 不要外包理解</h3>
+                <p class="cardText">代码能跑不等于我会了。看不懂就让 AI 解释，解释完再自己复述一遍。</p>
+            </div>
+            <div class="card" data-reveal style="--d:60ms">
+                <h3 class="cardTitle" style="margin-top:0">02 · 小步、可验证</h3>
+                <p class="cardText">一次只改一件事，改完立刻看结果。大重构听着爽，出问题最难查。</p>
+            </div>
+            <div class="card" data-reveal style="--d:120ms">
+                <h3 class="cardTitle" style="margin-top:0">03 · 先删后加</h3>
+                <p class="cardText">缺功能时加代码，出问题时先想能不能删。很多 bug 来自多余的兜底逻辑。</p>
+            </div>
+            <div class="card" data-reveal style="--d:180ms">
+                <h3 class="cardTitle" style="margin-top:0">04 · 审美不可外包</h3>
+                <p class="cardText">AI 能给出十个版本，但选哪个、为什么选，只能自己判断。这也是我还在练画的原因。</p>
+            </div>
+        </div>
+
+        <div class="callout" style="margin-top:18px" data-reveal>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3.5 4.5 6.8v5.4c0 4.3 3.1 7.4 7.5 8.8 4.4-1.4 7.5-4.5 7.5-8.8V6.8z" />
+                <path d="m9 12 2.2 2.2L15.5 10" />
+            </svg>
+            <p><strong>这个站就是例子：</strong>多页面结构、主题切换、滚动进度和卡片动效，全是在对话里一轮轮改出来的。</p>
+        </div>
+
+        <nav class="nextNav" aria-label="继续浏览">
+            <a class="nextLink" href="/blender.html">
+                <span class="nextLabel">Prev · 04</span>
+                <span class="nextTitle">← Blender 学习笔记</span>
+            </a>
+            <a class="nextLink nextLink--right" href="/contact.html">
+                <span class="nextLabel">Next · 06</span>
+                <span class="nextTitle">联系我 →</span>
+            </a>
+        </nav>
+    </div>
+
+    <footer class="siteFooter">
+        <div class="footerInner">
+            <div class="footerGrid">
+                <div class="footerBrand">
+                    <a class="brand" href="/">
+                        <img class="brandImg" src="/static/logo.png" width="30" height="30" alt="" aria-hidden="true" decoding="async">
+                        <span class="brandText">Braisedfish<span class="brandDot">.</span></span>
+                    </a>
+                    <p>NovelAI 画师，正在学 After Effects、Blender 与 Vibe Coding。这里放作品，也放学习过程。</p>
+                </div>
+                <div class="footerCol">
+                    <h4>导航</h4>
+                    <a href="/about.html">关于</a>
+                    <a href="/works.html">作品</a>
+                    <a href="/contact.html">联系</a>
+                </div>
+                <div class="footerCol">
+                    <h4>学习笔记</h4>
+                    <a href="/ae.html">After Effects</a>
+                    <a href="/blender.html">Blender</a>
+                    <a href="/vibe.html">Vibe Coding</a>
+                </div>
+            </div>
+            <div class="footerBottom">
+                <p>© <span id="year">2026</span> Braisedfish · Designed &amp; built with <span class="heart">♥</span>
+                </p>
+                <p>
+                    <a href="https://github.com/braisedfisher" target="_blank" rel="noopener">GitHub</a>
+                    <span class="sep">·</span>
+                    <a href="https://braisedfish.pages.dev" target="_blank" rel="noopener">Mirror</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="二维码" hidden>
+        <div class="lightbox-main">
+            <img class="lightbox-img" src="" alt="">
+        </div>
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="关闭">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="22" height="22" aria-hidden="true">
+                <path fill="currentColor"
+                    d="M610.616405 512.423878l391.647127 391.939565a68.722849 68.722849 0 0 1 0 98.332161 72.012772 72.012772 0 0 1-100.306115 0l-390.404267-391.354689-392.012675 391.28158a69.74638 69.74638 0 0 1-98.551489-98.551489l391.793346-391.720237L20.988986 119.533891A69.74638 69.74638 0 0 1 119.540475 20.982402l392.158893 392.451331L901.957417 23.248793a72.012772 72.012772 0 0 1 100.306115 0 68.722849 68.722849 0 0 1 0 98.332161L610.616405 512.423878z" />
+            </svg>
+        </button>
+    </div>
+
+    <script src="/static/script.js?v=3.0"></script>
+</body>
+
+</html>

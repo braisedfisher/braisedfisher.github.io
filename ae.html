@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>After Effects 学习笔记 · Braisedfish</title>
+    <meta name="description" content="After Effects 学习路线与笔记：关键帧曲线、常用表达式、快捷键和导出设置，一个画师的动效练习记录。">
+    <meta name="author" content="Braisedfish">
+    <link rel="canonical" href="https://www.braisedfish.cloudns.ch/ae.html">
+    <meta name="theme-color" content="#080a10">
+    <meta name="color-scheme" content="dark light">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="After Effects 学习笔记 · Braisedfish">
+    <meta property="og:description" content="从关键帧到表达式：我的 AE 学习路线。">
+    <meta property="og:url" content="https://www.braisedfish.cloudns.ch/ae.html">
+    <meta property="og:image" content="https://www.braisedfish.cloudns.ch/static/item/i1.png">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+    <link rel="stylesheet" href="/static/style.css?v=3.0">
+    <script>
+        (function () {
+            document.documentElement.classList.add('js');
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved !== 'light' && saved !== 'dark') {
+                    saved = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                }
+                document.documentElement.dataset.theme = saved;
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) meta.setAttribute('content', saved === 'light' ? '#f2f5fb' : '#080a10');
+            } catch (e) { }
+        })();
+    </script>
+</head>
+
+<body>
+    <header class="topbar" id="topbar">
+        <div class="topbarInner">
+            <a class="brand" href="/" aria-label="Braisedfish 首页">
+                <img class="brandImg" src="/static/logo.png" width="30" height="30" alt="" aria-hidden="true" decoding="async">
+                <span class="brandText">Braisedfish<span class="brandDot">.</span></span>
+            </a>
+            <nav class="nav" id="nav" aria-label="主导航">
+                <a class="navLink" href="/">首页</a>
+                <a class="navLink" href="/about.html">关于</a>
+                <a class="navLink" href="/works.html">作品</a>
+                <a class="navLink" href="/ae.html">AE</a>
+                <a class="navLink" href="/blender.html">Blender</a>
+                <a class="navLink" href="/vibe.html">Vibe</a>
+                <a class="navLink" href="/contact.html">联系</a>
+            </nav>
+            <div class="topbarActions">
+                <button class="iconItem icon--theme" id="themeToggle" type="button" aria-label="切换深浅色主题" data-tip="主题">
+                    <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4.2" />
+                        <path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" />
+                    </svg>
+                    <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                    </svg>
+                </button>
+                <button class="navToggle" id="navToggle" type="button" aria-label="打开菜单" aria-controls="nav"
+                    aria-expanded="false">
+                    <span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <div class="progress" id="progress" aria-hidden="true"></div>
+    </header>
+
+    <div class="page">
+        <header class="pageHero">
+            <p class="pageKicker"><span class="num">03</span><span>After Effects</span><span class="split"></span></p>
+            <h1 class="pageTitle">让静帧<em>动起来</em></h1>
+            <p class="pageLead">
+                画画的人学 AE，最先要改掉的是「一帧好看就够了」的惯性。动效是时间的构图：
+                什么时候进入、什么时候停留、什么时候收住，比加了几个特效重要得多。
+                这一页记录我的学习顺序、常用的表达式，以及真正会背下来的快捷键。
+            </p>
+            <div class="chips">
+                <span class="chip chip--accent">合成与预合成</span>
+                <span class="chip">关键帧曲线</span>
+                <span class="chip">表达式</span>
+                <span class="chip">导出规范</span>
+            </div>
+        </header>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">01 / Roadmap</p>
+                <h2 class="sectionTitle">我的学习顺序</h2>
+            </div>
+            <p class="sectionDesc">每一阶段都以「做出一个能给人看的东西」结束。</p>
+        </div>
+
+        <ol class="steps">
+            <li class="step" data-reveal>
+                <span class="stepNum">01</span>
+                <div>
+                    <h3>合成、图层与时间轴</h3>
+                    <p>先搞清楚合成不等于画布、预合成相当于打包、时间轴上的层级是从上往下叠的。这一阶段只做一件事：把一张图分层，做视差位移。</p>
+                    <div class="stepTags"><span>Comp</span><span>Pre-compose</span><span>视差</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:60ms">
+                <span class="stepNum">02</span>
+                <div>
+                    <h3>关键帧与速度曲线</h3>
+                    <p>所有「高级感」都来自缓动。F9 只是起点，真正要做的是进曲线编辑器，把入点拉慢、出点收住，让动作有重量。</p>
+                    <div class="stepTags"><span>F9</span><span>Graph Editor</span><span>缓动</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:120ms">
+                <span class="stepNum">03</span>
+                <div>
+                    <h3>表达式与自动化</h3>
+                    <p>重复的动作交给代码：抖动、循环、自动贴合文字。表达式不是炫技，是为了改一个参数就能整体重排。</p>
+                    <div class="stepTags"><span>JavaScript</span><span>wiggle</span><span>loopOut</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:180ms">
+                <span class="stepNum">04</span>
+                <div>
+                    <h3>文字动画与节奏</h3>
+                    <p>用 Range Selector 做逐字入场，配合音效卡点。文字动效的难点从来不是效果，是让它跟着呼吸走。</p>
+                    <div class="stepTags"><span>Animator</span><span>Range Selector</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:240ms">
+                <span class="stepNum">05</span>
+                <div>
+                    <h3>跟踪、合成与输出</h3>
+                    <p>Mocha 跟踪、绿幕抠像、色彩统一，最后按用途导出：交付用 H.264，留档用 ProRes。工程整理比渲染更花时间。</p>
+                    <div class="stepTags"><span>Mocha</span><span>Keying</span><span>ProRes</span></div>
+                </div>
+            </li>
+        </ol>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">02 / Expressions</p>
+                <h2 class="sectionTitle">四个够用的表达式</h2>
+            </div>
+            <p class="sectionDesc">按住 Alt 点属性前的秒表粘贴进去即可，复制按钮已就位。</p>
+        </div>
+
+        <div class="grid grid--2">
+            <div class="codeBlock" data-reveal>
+                <div class="codeHead">
+                    <span>wiggle · 位置</span>
+                    <button class="copyBtn" type="button">复制</button>
+                </div>
+                <pre><code><span class="tok-c">// 温和的手持感，别超过 2 的振幅</span>
+<span class="tok-k">var</span> freq = <span class="tok-n">1.2</span>;   <span class="tok-c">// 每秒抖动次数</span>
+<span class="tok-k">var</span> amp  = <span class="tok-n">12</span>;    <span class="tok-c">// 振幅（像素）</span>
+<span class="tok-f">wiggle</span>(freq, amp);</code></pre>
+            </div>
+
+            <div class="codeBlock" data-reveal style="--d:60ms">
+                <div class="codeHead">
+                    <span>loopOut · 循环</span>
+                    <button class="copyBtn" type="button">复制</button>
+                </div>
+                <pre><code><span class="tok-c">// 首尾无缝循环，适合待机动作</span>
+<span class="tok-f">loopOut</span>(<span class="tok-s">"cycle"</span>);
+
+<span class="tok-c">// 只循环最后 24 帧，前面留给入场</span>
+<span class="tok-f">loopOut</span>(<span class="tok-s">"cycle"</span>, <span class="tok-n">24</span>);</code></pre>
+            </div>
+
+            <div class="codeBlock" data-reveal style="--d:120ms">
+                <div class="codeHead">
+                    <span>sourceRectAtTime · 贴合文字</span>
+                    <button class="copyBtn" type="button">复制</button>
+                </div>
+                <pre><code><span class="tok-c">// 放在「矩形路径 → 大小」上，底板跟着文字变宽</span>
+<span class="tok-k">var</span> title = thisComp.layer(<span class="tok-s">"Title"</span>);
+<span class="tok-k">var</span> padX = <span class="tok-n">40</span>;
+<span class="tok-k">var</span> padY = <span class="tok-n">18</span>;
+<span class="tok-k">var</span> r = title.<span class="tok-f">sourceRectAtTime</span>(time, <span class="tok-k">false</span>);
+[r.width + padX * <span class="tok-n">2</span>, r.height + padY * <span class="tok-n">2</span>];</code></pre>
+            </div>
+
+            <div class="codeBlock" data-reveal style="--d:180ms">
+                <div class="codeHead">
+                    <span>linear · 数字递增</span>
+                    <button class="copyBtn" type="button">复制</button>
+                </div>
+                <pre><code><span class="tok-c">// 源文本：从 0 数到目标值</span>
+<span class="tok-k">var</span> target = <span class="tok-n">128</span>;
+<span class="tok-k">var</span> dur    = <span class="tok-n">1.5</span>;  <span class="tok-c">// 秒</span>
+<span class="tok-k">var</span> v = <span class="tok-f">linear</span>(time, <span class="tok-n">0</span>, dur, <span class="tok-n">0</span>, target);
+<span class="tok-f">Math</span>.round(v).<span class="tok-f">toString</span>();</code></pre>
+            </div>
+        </div>
+
+        <div class="callout" style="margin-top:18px" data-reveal>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3.5 4.5 6.8v5.4c0 4.3 3.1 7.4 7.5 8.8 4.4-1.4 7.5-4.5 7.5-8.8V6.8z" />
+                <path d="m9 12 2.2 2.2L15.5 10" />
+            </svg>
+            <p><strong>别急着抄：</strong>先把表达式里的数字改一遍，看画面怎么变。理解了参数，才算真的会用它。</p>
+        </div>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">03 / Shortcuts</p>
+                <h2 class="sectionTitle">真正会背的快捷键</h2>
+            </div>
+            <p class="sectionDesc">选中图层再按，左手基本不用离开键盘。</p>
+        </div>
+
+        <div class="tableWrap" data-reveal>
+            <table class="kbdTable">
+                <thead>
+                    <tr><th>快捷键</th><th>作用</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><kbd>P</kbd><kbd>S</kbd><kbd>R</kbd><kbd>T</kbd><kbd>A</kbd></td><td>位置 / 缩放 / 旋转 / 不透明度 / 锚点</td></tr>
+                    <tr><td><kbd>U</kbd></td><td>只显示已有关键帧的属性</td></tr>
+                    <tr><td><kbd>F9</kbd></td><td>Easy Ease，给选中关键帧加缓动</td></tr>
+                    <tr><td><kbd>Shift</kbd> + <kbd>F3</kbd></td><td>打开曲线编辑器，调速度曲线</td></tr>
+                    <tr><td><kbd>[</kbd> / <kbd>]</kbd></td><td>图层入点 / 出点对齐到播放头</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd></td><td>在播放头处拆分图层</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd></td><td>预合成选中图层</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd></td><td>取消选择全部图层</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd></td><td>启用时间重映射</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>K</kbd></td><td>打开合成设置</td></tr>
+                    <tr><td><kbd>M</kbd> / <kbd>M</kbd><kbd>M</kbd></td><td>蒙版路径 / 全部蒙版属性</td></tr>
+                    <tr><td><kbd>B</kbd> / <kbd>N</kbd></td><td>设置工作区起点 / 终点</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">04 / Export</p>
+                <h2 class="sectionTitle">导出设置</h2>
+            </div>
+            <p class="sectionDesc">同一个工程，三种用途，别用同一套参数糊过去。</p>
+        </div>
+
+        <div class="grid grid--3">
+            <div class="card" data-reveal>
+                <h3 class="cardTitle" style="margin-top:0">发布用</h3>
+                <p class="cardText">H.264，1080p，目标码率 12～20 Mbps。平台会二次压缩，源文件别给太低。</p>
+                <span class="cardMeta">MP4 · H.264</span>
+            </div>
+            <div class="card" data-reveal style="--d:80ms">
+                <h3 class="cardTitle" style="margin-top:0">留档用</h3>
+                <p class="cardText">ProRes 422 HQ 或 PNG 序列。文件大，但二次调色和剪辑不会掉画质。</p>
+                <span class="cardMeta">ProRes · 序列</span>
+            </div>
+            <div class="card" data-reveal style="--d:160ms">
+                <h3 class="cardTitle" style="margin-top:0">网页动图</h3>
+                <p class="cardText">短循环优先 WebM，体积小、透明度友好；必须兼容老环境时再退回 GIF。</p>
+                <span class="cardMeta">WebM · GIF</span>
+            </div>
+        </div>
+
+        <nav class="nextNav" aria-label="继续浏览">
+            <a class="nextLink" href="/blender.html">
+                <span class="nextLabel">Next · 04</span>
+                <span class="nextTitle">Blender 学习笔记 →</span>
+            </a>
+            <a class="nextLink nextLink--right" href="/vibe.html">
+                <span class="nextLabel">Next · 05</span>
+                <span class="nextTitle">Vibe Coding →</span>
+            </a>
+        </nav>
+    </div>
+
+    <footer class="siteFooter">
+        <div class="footerInner">
+            <div class="footerGrid">
+                <div class="footerBrand">
+                    <a class="brand" href="/">
+                        <img class="brandImg" src="/static/logo.png" width="30" height="30" alt="" aria-hidden="true" decoding="async">
+                        <span class="brandText">Braisedfish<span class="brandDot">.</span></span>
+                    </a>
+                    <p>NovelAI 画师，正在学 After Effects、Blender 与 Vibe Coding。这里放作品，也放学习过程。</p>
+                </div>
+                <div class="footerCol">
+                    <h4>导航</h4>
+                    <a href="/about.html">关于</a>
+                    <a href="/works.html">作品</a>
+                    <a href="/contact.html">联系</a>
+                </div>
+                <div class="footerCol">
+                    <h4>学习笔记</h4>
+                    <a href="/ae.html">After Effects</a>
+                    <a href="/blender.html">Blender</a>
+                    <a href="/vibe.html">Vibe Coding</a>
+                </div>
+            </div>
+            <div class="footerBottom">
+                <p>© <span id="year">2026</span> Braisedfish · Designed &amp; built with <span class="heart">♥</span>
+                </p>
+                <p>
+                    <a href="https://github.com/braisedfisher" target="_blank" rel="noopener">GitHub</a>
+                    <span class="sep">·</span>
+                    <a href="https://braisedfish.pages.dev" target="_blank" rel="noopener">Mirror</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="二维码" hidden>
+        <div class="lightbox-main">
+            <img class="lightbox-img" src="" alt="">
+        </div>
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="关闭">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="22" height="22" aria-hidden="true">
+                <path fill="currentColor"
+                    d="M610.616405 512.423878l391.647127 391.939565a68.722849 68.722849 0 0 1 0 98.332161 72.012772 72.012772 0 0 1-100.306115 0l-390.404267-391.354689-392.012675 391.28158a69.74638 69.74638 0 0 1-98.551489-98.551489l391.793346-391.720237L20.988986 119.533891A69.74638 69.74638 0 0 1 119.540475 20.982402l392.158893 392.451331L901.957417 23.248793a72.012772 72.012772 0 0 1 100.306115 0 68.722849 68.722849 0 0 1 0 98.332161L610.616405 512.423878z" />
+            </svg>
+        </button>
+    </div>
+
+    <script src="/static/script.js?v=3.0"></script>
+</body>
+
+</html>

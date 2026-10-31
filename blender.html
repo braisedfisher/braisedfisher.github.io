@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Blender 学习笔记 · Braisedfish</title>
+    <meta name="description" content="Blender 学习路线与笔记：建模、材质、灯光、渲染和常用 Python 脚本，从二维插画走进三维空间。">
+    <meta name="author" content="Braisedfish">
+    <link rel="canonical" href="https://www.braisedfish.cloudns.ch/blender.html">
+    <meta name="theme-color" content="#080a10">
+    <meta name="color-scheme" content="dark light">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Blender 学习笔记 · Braisedfish">
+    <meta property="og:description" content="建模、材质、渲染：我的 Blender 学习路线。">
+    <meta property="og:url" content="https://www.braisedfish.cloudns.ch/blender.html">
+    <meta property="og:image" content="https://www.braisedfish.cloudns.ch/static/item/i1.png">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+    <link rel="stylesheet" href="/static/style.css?v=3.0">
+    <script>
+        (function () {
+            document.documentElement.classList.add('js');
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved !== 'light' && saved !== 'dark') {
+                    saved = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                }
+                document.documentElement.dataset.theme = saved;
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) meta.setAttribute('content', saved === 'light' ? '#f2f5fb' : '#080a10');
+            } catch (e) { }
+        })();
+    </script>
+</head>
+
+<body>
+    <header class="topbar" id="topbar">
+        <div class="topbarInner">
+            <a class="brand" href="/" aria-label="Braisedfish 首页">
+                <img class="brandImg" src="/static/logo.png" width="30" height="30" alt="" aria-hidden="true" decoding="async">
+                <span class="brandText">Braisedfish<span class="brandDot">.</span></span>
+            </a>
+            <nav class="nav" id="nav" aria-label="主导航">
+                <a class="navLink" href="/">首页</a>
+                <a class="navLink" href="/about.html">关于</a>
+                <a class="navLink" href="/works.html">作品</a>
+                <a class="navLink" href="/ae.html">AE</a>
+                <a class="navLink" href="/blender.html">Blender</a>
+                <a class="navLink" href="/vibe.html">Vibe</a>
+                <a class="navLink" href="/contact.html">联系</a>
+            </nav>
+            <div class="topbarActions">
+                <button class="iconItem icon--theme" id="themeToggle" type="button" aria-label="切换深浅色主题" data-tip="主题">
+                    <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4.2" />
+                        <path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" />
+                    </svg>
+                    <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                    </svg>
+                </button>
+                <button class="navToggle" id="navToggle" type="button" aria-label="打开菜单" aria-controls="nav"
+                    aria-expanded="false">
+                    <span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <div class="progress" id="progress" aria-hidden="true"></div>
+    </header>
+
+    <div class="page">
+        <header class="pageHero">
+            <p class="pageKicker"><span class="num">04</span><span>Blender</span><span class="split"></span></p>
+            <h1 class="pageTitle">给角色一个<br>可以被<em>旋转</em>的世界</h1>
+            <p class="pageLead">
+                画了两年二维，最想补的是「空间」。Blender 对我的意义不是做写实渲染，
+                而是能随手搭一个场景、摆一盏灯，看看光从侧面打过来时，画面会变成什么样。
+                这一页是建模、材质与渲染的练习记录，也包括几个省时间的脚本。
+            </p>
+            <div class="chips">
+                <span class="chip chip--accent">建模</span>
+                <span class="chip">材质与灯光</span>
+                <span class="chip">Cycles</span>
+                <span class="chip">Python / bpy</span>
+            </div>
+        </header>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">01 / Roadmap</p>
+                <h2 class="sectionTitle">从方块开始</h2>
+            </div>
+            <p class="sectionDesc">按「能出图」倒推，先学打光和构图，再回头补拓扑。</p>
+        </div>
+
+        <ol class="steps">
+            <li class="step" data-reveal>
+                <span class="stepNum">01</span>
+                <div>
+                    <h3>视图导航与物体操作</h3>
+                    <p>中键旋转、Shift+中键平移、滚轮缩放；G/R/S 三件套先练到盲操。这一关过了，后面才不别扭。</p>
+                    <div class="stepTags"><span>Navigation</span><span>G / R / S</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:60ms">
+                <span class="stepNum">02</span>
+                <div>
+                    <h3>方块建模与硬表面</h3>
+                    <p>从立方体挤出开始，用环切加结构线、倒角收边。目标不是高模，是形体干净、比例可信。</p>
+                    <div class="stepTags"><span>Extrude</span><span>Loop Cut</span><span>Bevel</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:120ms">
+                <span class="stepNum">03</span>
+                <div>
+                    <h3>材质、UV 与贴图</h3>
+                    <p>Principled BSDF 的粗糙度和金属度先玩熟，再学用节点混出插画质感。UV 展开只求不拉伸。</p>
+                    <div class="stepTags"><span>Shader</span><span>UV</span><span>Node</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:180ms">
+                <span class="stepNum">04</span>
+                <div>
+                    <h3>灯光与构图</h3>
+                    <p>三点布光、HDRI 环境光、区域光的软硬对比。灯打对了，普通模型也能出片。</p>
+                    <div class="stepTags"><span>HDRI</span><span>Area Light</span><span>三点布光</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:240ms">
+                <span class="stepNum">05</span>
+                <div>
+                    <h3>渲染与合成</h3>
+                    <p>EEVEE 用来快速试错，Cycles 出终图。分层渲染（Object Index / Cryptomatte）后进 AE 调色。</p>
+                    <div class="stepTags"><span>EEVEE</span><span>Cycles</span><span>Cryptomatte</span></div>
+                </div>
+            </li>
+        </ol>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">02 / Shortcuts</p>
+                <h2 class="sectionTitle">必须形成肌肉记忆的键</h2>
+            </div>
+            <p class="sectionDesc">先背这十二个，剩下的边用边记。</p>
+        </div>
+
+        <div class="tableWrap" data-reveal>
+            <table class="kbdTable">
+                <thead>
+                    <tr><th>快捷键</th><th>作用</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><kbd>G</kbd> / <kbd>R</kbd> / <kbd>S</kbd></td><td>移动 / 旋转 / 缩放，按 X Y Z 锁轴</td></tr>
+                    <tr><td><kbd>Tab</kbd></td><td>物体模式 ↔ 编辑模式</td></tr>
+                    <tr><td><kbd>E</kbd></td><td>挤出，沿法线或按轴</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>R</kbd></td><td>环切并滑动，滚轮加段数</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>B</kbd></td><td>倒角，滚轮加细分</td></tr>
+                    <tr><td><kbd>Alt</kbd> + 左键</td><td>选择循环边 / 面</td></tr>
+                    <tr><td><kbd>Shift</kbd> + <kbd>A</kbd></td><td>添加物体 / 节点</td></tr>
+                    <tr><td><kbd>Z</kbd></td><td>着色方式饼菜单（实体 / 材质预览 / 渲染）</td></tr>
+                    <tr><td><kbd>N</kbd></td><td>侧栏，精确输入变换数值</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>2</kbd></td><td>加二级细分曲面，快速圆滑</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>J</kbd> / <kbd>P</kbd></td><td>合并物体 / 分离选中部分</td></tr>
+                    <tr><td><kbd>Ctrl</kbd> + <kbd>A</kbd></td><td>应用变换（缩放必须归 1 再导出）</td></tr>
+                    <tr><td><kbd>F</kbd> / <kbd>F2</kbd></td><td>框选聚焦 / 重命名</td></tr>
+                    <tr><td><kbd>I</kbd> / <kbd>空格</kbd></td><td>插入关键帧 / 播放</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">03 / Scripts</p>
+                <h2 class="sectionTitle">常用的小脚本</h2>
+            </div>
+            <p class="sectionDesc">重复操作超过三次，就该写成脚本了。</p>
+        </div>
+
+        <div class="grid grid--2">
+            <div class="codeBlock" data-reveal>
+                <div class="codeHead">
+                    <span>Python · 批量改名</span>
+                    <button class="copyBtn" type="button">复制</button>
+                </div>
+                <pre><code><span class="tok-k">import</span> bpy
+
+prefix = <span class="tok-s">"BF_"</span>
+<span class="tok-k">for</span> obj <span class="tok-k">in</span> bpy.context.selected_objects:
+    <span class="tok-k">if</span> obj.name.<span class="tok-f">startswith</span>(prefix):
+        <span class="tok-k">continue</span>
+    obj.name = prefix + obj.name
+    obj.data.name = obj.name</code></pre>
+            </div>
+
+            <div class="codeBlock" data-reveal style="--d:60ms">
+                <div class="codeHead">
+                    <span>Python · 渲染设置</span>
+                    <button class="copyBtn" type="button">复制</button>
+                </div>
+                <pre><code><span class="tok-k">import</span> bpy
+
+scene = bpy.context.scene
+scene.render.engine = <span class="tok-s">"CYCLES"</span>
+scene.cycles.samples = <span class="tok-n">256</span>
+scene.cycles.use_denoising = <span class="tok-k">True</span>
+scene.render.resolution_x = <span class="tok-n">1920</span>
+scene.render.resolution_y = <span class="tok-n">1080</span>
+scene.render.image_settings.file_format = <span class="tok-s">"PNG"</span></code></pre>
+            </div>
+
+            <div class="codeBlock" data-reveal style="--d:120ms">
+                <div class="codeHead">
+                    <span>Shell · 无界面渲染</span>
+                    <button class="copyBtn" type="button">复制</button>
+                </div>
+                <pre><code><span class="tok-c"># 批量渲染整段动画，-a 表示 render animation</span>
+blender -b scene.blend \
+  -o <span class="tok-s">//frames/f_####</span> \
+  -F PNG -a</code></pre>
+            </div>
+
+            <div class="codeBlock" data-reveal style="--d:180ms">
+                <div class="codeHead">
+                    <span>Python · 应用全部变换</span>
+                    <button class="copyBtn" type="button">复制</button>
+                </div>
+                <pre><code><span class="tok-k">import</span> bpy
+
+bpy.ops.<span class="tok-f">object.select_all</span>(action=<span class="tok-s">"SELECT"</span>)
+bpy.ops.<span class="tok-f">object.transform_apply</span>(
+    location=<span class="tok-k">False</span>,
+    rotation=<span class="tok-k">True</span>,
+    scale=<span class="tok-k">True</span>
+)</code></pre>
+            </div>
+        </div>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">04 / Resources</p>
+                <h2 class="sectionTitle">在用的资源站</h2>
+            </div>
+            <p class="sectionDesc">免费素材优先，能商用且署名清楚的才进项目。</p>
+        </div>
+
+        <div class="grid grid--3">
+            <a class="card" href="https://polyhaven.com/" target="_blank" rel="noopener" data-reveal>
+                <h3 class="cardTitle" style="margin-top:0">Poly Haven</h3>
+                <p class="cardText">HDRI、材质、模型全免费，CC0 授权。打光找不到感觉时，先换一张环境图。</p>
+                <span class="cardMeta">polyhaven.com</span>
+            </a>
+            <a class="card" href="https://blenderkit.com/" target="_blank" rel="noopener" data-reveal style="--d:80ms">
+                <h3 class="cardTitle" style="margin-top:0">BlenderKit</h3>
+                <p class="cardText">直接装在 Blender 里的资产库，材质和模型一键拖进场景，适合快速搭景。</p>
+                <span class="cardMeta">blenderkit.com</span>
+            </a>
+            <a class="card" href="https://www.blender.org/support/tutorials/" target="_blank" rel="noopener"
+                data-reveal style="--d:160ms">
+                <h3 class="cardTitle" style="margin-top:0">官方教程</h3>
+                <p class="cardText">想系统过一遍基础时看官方，比二手教程少踩版本差异的坑。</p>
+                <span class="cardMeta">blender.org</span>
+            </a>
+        </div>
+
+        <div class="callout" style="margin-top:18px" data-reveal>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3.5 4.5 6.8v5.4c0 4.3 3.1 7.4 7.5 8.8 4.4-1.4 7.5-4.5 7.5-8.8V6.8z" />
+                <path d="m9 12 2.2 2.2L15.5 10" />
+            </svg>
+            <p><strong>一个习惯：</strong>每个练习都存两个版本 —— 一个继续改，一个封存。封存的那份用来对比，进步才看得见。</p>
+        </div>
+
+        <nav class="nextNav" aria-label="继续浏览">
+            <a class="nextLink" href="/ae.html">
+                <span class="nextLabel">Prev · 03</span>
+                <span class="nextTitle">← After Effects 学习笔记</span>
+            </a>
+            <a class="nextLink nextLink--right" href="/vibe.html">
+                <span class="nextLabel">Next · 05</span>
+                <span class="nextTitle">Vibe Coding →</span>
+            </a>
+        </nav>
+    </div>
+
+    <footer class="siteFooter">
+        <div class="footerInner">
+            <div class="footerGrid">
+                <div class="footerBrand">
+                    <a class="brand" href="/">
+                        <img class="brandImg" src="/static/logo.png" width="30" height="30" alt="" aria-hidden="true" decoding="async">
+                        <span class="brandText">Braisedfish<span class="brandDot">.</span></span>
+                    </a>
+                    <p>NovelAI 画师，正在学 After Effects、Blender 与 Vibe Coding。这里放作品，也放学习过程。</p>
+                </div>
+                <div class="footerCol">
+                    <h4>导航</h4>
+                    <a href="/about.html">关于</a>
+                    <a href="/works.html">作品</a>
+                    <a href="/contact.html">联系</a>
+                </div>
+                <div class="footerCol">
+                    <h4>学习笔记</h4>
+                    <a href="/ae.html">After Effects</a>
+                    <a href="/blender.html">Blender</a>
+                    <a href="/vibe.html">Vibe Coding</a>
+                </div>
+            </div>
+            <div class="footerBottom">
+                <p>© <span id="year">2026</span> Braisedfish · Designed &amp; built with <span class="heart">♥</span>
+                </p>
+                <p>
+                    <a href="https://github.com/braisedfisher" target="_blank" rel="noopener">GitHub</a>
+                    <span class="sep">·</span>
+                    <a href="https://braisedfish.pages.dev" target="_blank" rel="noopener">Mirror</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="二维码" hidden>
+        <div class="lightbox-main">
+            <img class="lightbox-img" src="" alt="">
+        </div>
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="关闭">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="22" height="22" aria-hidden="true">
+                <path fill="currentColor"
+                    d="M610.616405 512.423878l391.647127 391.939565a68.722849 68.722849 0 0 1 0 98.332161 72.012772 72.012772 0 0 1-100.306115 0l-390.404267-391.354689-392.012675 391.28158a69.74638 69.74638 0 0 1-98.551489-98.551489l391.793346-391.720237L20.988986 119.533891A69.74638 69.74638 0 0 1 119.540475 20.982402l392.158893 392.451331L901.957417 23.248793a72.012772 72.012772 0 0 1 100.306115 0 68.722849 68.722849 0 0 1 0 98.332161L610.616405 512.423878z" />
+            </svg>
+        </button>
+    </div>
+
+    <script src="/static/script.js?v=3.0"></script>
+</body>
+
+</html>

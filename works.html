@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>作品与项目 · Braisedfish</title>
+    <meta name="description" content="Braisedfish 的插画作品、开源项目与创作工作流：NovelAI 出图 → 后期 → AE 动效 → Blender 场景。">
+    <meta name="author" content="Braisedfish">
+    <link rel="canonical" href="https://www.braisedfish.cloudns.ch/works.html">
+    <meta name="theme-color" content="#080a10">
+    <meta name="color-scheme" content="dark light">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="作品与项目 · Braisedfish">
+    <meta property="og:description" content="画作、开源项目与创作流程。">
+    <meta property="og:url" content="https://www.braisedfish.cloudns.ch/works.html">
+    <meta property="og:image" content="https://www.braisedfish.cloudns.ch/static/item/i1.png">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+    <link rel="stylesheet" href="/static/style.css?v=3.0">
+    <script>
+        (function () {
+            document.documentElement.classList.add('js');
+            try {
+                var saved = localStorage.getItem('theme');
+                if (saved !== 'light' && saved !== 'dark') {
+                    saved = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                }
+                document.documentElement.dataset.theme = saved;
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) meta.setAttribute('content', saved === 'light' ? '#f2f5fb' : '#080a10');
+            } catch (e) { }
+        })();
+    </script>
+</head>
+
+<body>
+    <header class="topbar" id="topbar">
+        <div class="topbarInner">
+            <a class="brand" href="/" aria-label="Braisedfish 首页">
+                <img class="brandImg" src="/static/logo.png" width="30" height="30" alt="" aria-hidden="true" decoding="async">
+                <span class="brandText">Braisedfish<span class="brandDot">.</span></span>
+            </a>
+            <nav class="nav" id="nav" aria-label="主导航">
+                <a class="navLink" href="/">首页</a>
+                <a class="navLink" href="/about.html">关于</a>
+                <a class="navLink" href="/works.html">作品</a>
+                <a class="navLink" href="/ae.html">AE</a>
+                <a class="navLink" href="/blender.html">Blender</a>
+                <a class="navLink" href="/vibe.html">Vibe</a>
+                <a class="navLink" href="/contact.html">联系</a>
+            </nav>
+            <div class="topbarActions">
+                <button class="iconItem icon--theme" id="themeToggle" type="button" aria-label="切换深浅色主题" data-tip="主题">
+                    <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4.2" />
+                        <path d="M12 2v2.2M12 19.8V22M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2 12h2.2M19.8 12H22M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" />
+                    </svg>
+                    <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+                    </svg>
+                </button>
+                <button class="navToggle" id="navToggle" type="button" aria-label="打开菜单" aria-controls="nav"
+                    aria-expanded="false">
+                    <span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <div class="progress" id="progress" aria-hidden="true"></div>
+    </header>
+
+    <div class="page">
+        <header class="pageHero">
+            <p class="pageKicker"><span class="num">02</span><span>Works</span><span class="split"></span></p>
+            <h1 class="pageTitle">作品、项目，<br>以及它们<em>怎么来的</em></h1>
+            <p class="pageLead">
+                一半是画面，一半是代码。下面按「最终产出」和「生产工具」分开摆放 —— 想看图去 Pixiv，
+                想看实现去 GitHub，想知道流程就继续往下读。
+            </p>
+            <div class="chips">
+                <span class="chip chip--accent">插画</span>
+                <span class="chip">开源工具</span>
+                <span class="chip">动效</span>
+                <span class="chip">三维</span>
+            </div>
+        </header>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">01 / Illustration</p>
+                <h2 class="sectionTitle">插画</h2>
+            </div>
+            <p class="sectionDesc">作品持续更新在 Pixiv，约稿请走联系页。</p>
+        </div>
+
+        <div class="grid grid--2">
+            <a class="card" href="https://www.pixiv.net/users/77540431" target="_blank" rel="noopener" data-reveal>
+                <span class="cardIndex" aria-hidden="true">P</span>
+                <span class="cardIcon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="4.5" width="18" height="15" rx="2.5" />
+                        <circle cx="8.6" cy="9.6" r="1.6" />
+                        <path d="M3.6 16.5l4.6-4.2 3.4 3 2.8-2.4 5.9 5.1" />
+                    </svg>
+                </span>
+                <h3 class="cardTitle">Pixiv 作品集</h3>
+                <p class="cardText">完整图集、系列与创作说明都在 Pixiv。喜欢哪一张可以直接留言，我会看到。</p>
+                <span class="cardMeta">pixiv.net/users/77540431
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </span>
+            </a>
+
+            <a class="card" href="/contact.html" data-reveal style="--d:80ms">
+                <span class="cardIndex" aria-hidden="true">C</span>
+                <span class="cardIcon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.6-4.4A8.5 8.5 0 1 1 20.5 11.5z" />
+                        <path d="M8.5 10.5h7M8.5 13.5h4.5" />
+                    </svg>
+                </span>
+                <h3 class="cardTitle">约稿 / 合作</h3>
+                <p class="cardText">插画、封面、简单的动效与网页都能聊。带上用途、尺寸和截止时间，回复会快很多。</p>
+                <span class="cardMeta">查看联系方式
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </span>
+            </a>
+        </div>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">02 / Open Source</p>
+                <h2 class="sectionTitle">开源项目</h2>
+            </div>
+            <p class="sectionDesc">都是自己用得上才写的，所以维护得还算勤。</p>
+        </div>
+
+        <div class="grid grid--2">
+            <article class="card" data-reveal>
+                <h3 class="cardTitle" style="margin-top:0">bilibili_trending</h3>
+                <p class="cardText">
+                    给麦麦（Maibot）用的 B 站视频随机推送插件。抓热门、去重、按兴趣过滤，
+                    让群聊里永远有东西可看。
+                </p>
+                <div class="chips" style="margin-top:14px">
+                    <span class="chip">Python</span>
+                    <span class="chip">Maibot 插件</span>
+                </div>
+                <a class="cardMeta" href="https://github.com/braisedfisher/bilibili_trending" target="_blank"
+                    rel="noopener">GitHub 仓库
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M7 17 17 7M9 7h8v8" />
+                    </svg>
+                </a>
+            </article>
+
+            <article class="card" data-reveal style="--d:80ms">
+                <h3 class="cardTitle" style="margin-top:0">pixiv-proxy</h3>
+                <p class="cardText">
+                    解决 Pixiv 图片加载问题的代理小工具。部署一次，之后所有页面都能直接引用原图。
+                </p>
+                <div class="chips" style="margin-top:14px">
+                    <span class="chip">JavaScript</span>
+                    <span class="chip">代理</span>
+                </div>
+                <a class="cardMeta" href="https://github.com/braisedfisher/pixiv-proxy" target="_blank"
+                    rel="noopener">GitHub 仓库
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M7 17 17 7M9 7h8v8" />
+                    </svg>
+                </a>
+            </article>
+
+            <article class="card" data-reveal style="--d:160ms">
+                <h3 class="cardTitle" style="margin-top:0">braisedfisher.github.io</h3>
+                <p class="cardText">
+                    本站源码。纯静态多页面，共享一套 CSS 变量和原生 JS：主题切换、滚动进度、入场动画、代码复制，
+                    没有构建步骤。
+                </p>
+                <div class="chips" style="margin-top:14px">
+                    <span class="chip">HTML</span>
+                    <span class="chip">CSS</span>
+                    <span class="chip">Vanilla JS</span>
+                </div>
+                <a class="cardMeta" href="https://github.com/braisedfisher/braisedfisher.github.io" target="_blank"
+                    rel="noopener">GitHub 仓库
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M7 17 17 7M9 7h8v8" />
+                    </svg>
+                </a>
+            </article>
+
+            <a class="card" href="https://github.com/braisedfisher" target="_blank" rel="noopener" data-reveal
+                style="--d:240ms">
+                <span class="cardIndex" aria-hidden="true">···</span>
+                <h3 class="cardTitle" style="margin-top:0">还在写</h3>
+                <p class="cardText">新的小工具会先出现在 GitHub，稳定之后再补文档和这里的一行简介。</p>
+                <span class="cardMeta">浏览全部仓库
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </span>
+            </a>
+        </div>
+
+        <div class="sectionHead">
+            <div>
+                <p class="sectionLabel">03 / Pipeline</p>
+                <h2 class="sectionTitle">一张图的生产流程</h2>
+            </div>
+            <p class="sectionDesc">从想法到会动的画面，每一步都留了可回退的文件。</p>
+        </div>
+
+        <ol class="steps">
+            <li class="step" data-reveal>
+                <span class="stepNum">01</span>
+                <div>
+                    <h3>提想法 &amp; 找参考</h3>
+                    <p>先确定画面情绪和主色调，再收集 3～5 张参考。参考不是用来抄的，是为了让「好看」有具体坐标。</p>
+                    <div class="stepTags"><span>情绪板</span><span>参考图</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:60ms">
+                <span class="stepNum">02</span>
+                <div>
+                    <h3>NovelAI 出图 &amp; 筛图</h3>
+                    <p>固定风格词，批量生成后只挑构图成立的。构图层优先，细节留给后期，不然会一直在重抽。</p>
+                    <div class="stepTags"><span>NovelAI</span><span>提示词</span><span>批量筛选</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:120ms">
+                <span class="stepNum">03</span>
+                <div>
+                    <h3>后期修补</h3>
+                    <p>修手、修结构、统一光影，顺手把图层拆开：前景、角色、背景各一层，方便下一步做动效。</p>
+                    <div class="stepTags"><span>分层</span><span>调色</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:180ms">
+                <span class="stepNum">04</span>
+                <div>
+                    <h3>AE 动效 / Blender 场景</h3>
+                    <p>轻动效走 AE（视差、粒子、光效）；需要真实体积感或镜头运动时，把元素丢进 Blender 重新打光。</p>
+                    <div class="stepTags"><span>After Effects</span><span>Blender</span><span>渲染</span></div>
+                </div>
+            </li>
+            <li class="step" data-reveal style="--d:240ms">
+                <span class="stepNum">05</span>
+                <div>
+                    <h3>导出 &amp; 归档</h3>
+                    <p>发布用 H.264，留档用高质量中间格式；工程文件按「日期_项目_版本」命名，下次还能找回来。</p>
+                    <div class="stepTags"><span>H.264</span><span>归档</span></div>
+                </div>
+            </li>
+        </ol>
+
+        <nav class="nextNav" aria-label="继续浏览">
+            <a class="nextLink" href="/ae.html">
+                <span class="nextLabel">Next · 03</span>
+                <span class="nextTitle">After Effects 学习笔记 →</span>
+            </a>
+            <a class="nextLink nextLink--right" href="/blender.html">
+                <span class="nextLabel">Next · 04</span>
+                <span class="nextTitle">Blender 学习笔记 →</span>
+            </a>
+        </nav>
+    </div>
+
+    <footer class="siteFooter">
+        <div class="footerInner">
+            <div class="footerGrid">
+                <div class="footerBrand">
+                    <a class="brand" href="/">
+                        <img class="brandImg" src="/static/logo.png" width="30" height="30" alt="" aria-hidden="true" decoding="async">
+                        <span class="brandText">Braisedfish<span class="brandDot">.</span></span>
+                    </a>
+                    <p>NovelAI 画师，正在学 After Effects、Blender 与 Vibe Coding。这里放作品，也放学习过程。</p>
+                </div>
+                <div class="footerCol">
+                    <h4>导航</h4>
+                    <a href="/about.html">关于</a>
+                    <a href="/works.html">作品</a>
+                    <a href="/contact.html">联系</a>
+                </div>
+                <div class="footerCol">
+                    <h4>学习笔记</h4>
+                    <a href="/ae.html">After Effects</a>
+                    <a href="/blender.html">Blender</a>
+                    <a href="/vibe.html">Vibe Coding</a>
+                </div>
+            </div>
+            <div class="footerBottom">
+                <p>© <span id="year">2026</span> Braisedfish · Designed &amp; built with <span class="heart">♥</span>
+                </p>
+                <p>
+                    <a href="https://github.com/braisedfisher" target="_blank" rel="noopener">GitHub</a>
+                    <span class="sep">·</span>
+                    <a href="https://braisedfish.pages.dev" target="_blank" rel="noopener">Mirror</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="二维码" hidden>
+        <div class="lightbox-main">
+            <img class="lightbox-img" src="" alt="">
+        </div>
+        <button class="lightbox-close" id="lightboxClose" type="button" aria-label="关闭">
+            <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="22" height="22" aria-hidden="true">
+                <path fill="currentColor"
+                    d="M610.616405 512.423878l391.647127 391.939565a68.722849 68.722849 0 0 1 0 98.332161 72.012772 72.012772 0 0 1-100.306115 0l-390.404267-391.354689-392.012675 391.28158a69.74638 69.74638 0 0 1-98.551489-98.551489l391.793346-391.720237L20.988986 119.533891A69.74638 69.74638 0 0 1 119.540475 20.982402l392.158893 392.451331L901.957417 23.248793a72.012772 72.012772 0 0 1 100.306115 0 68.722849 68.722849 0 0 1 0 98.332161L610.616405 512.423878z" />
+            </svg>
+        </button>
+    </div>
+
+    <script src="/static/script.js?v=3.0"></script>
+</body>
+
+</html>
